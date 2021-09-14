@@ -10,11 +10,11 @@ Analyze Zillow data from May to August 2017 using 'Single Family Residential' ob
 6. Present work and findings to an audience familiar with data science
 7. Deliver my work in the form of a clean Jupyter Notebook
 
-# Key Findings
-1.
-
-# Initial Hypotheses
-1.
+# Hypotheses
+- There is a linear relationship between a home's value and the number of bedrooms it has.
+    * We accept this hypothesis with 95% confidence.
+- The value of a home with two bedrooms is not statistically different from a home with two bathrooms.
+    * We reject this hypothesis with 95% confidence.
 
 # Plan 
 1. Acquire the correct data subset from the 'zillow' dataset
@@ -73,7 +73,7 @@ Analyze Zillow data from May to August 2017 using 'Single Family Residential' ob
         * Scale X_test, drop unscaled columns
     * *After MVP*: Run through above steps as needed with any additional features
     * **PREP.py**: 
-        * Add plot-data dunction to make various plots for a dataframe when called
+        * Add plot-data function to make various plots for a dataframe when called
         * Add clean-data function to limit dataset features, drop nulls, eliminate outliers, rename columns
             * *After MPV*: Revise clean-data with new features
         * Add split-data function for train/validate/test *and* target isolation
