@@ -4,14 +4,17 @@ import os
 from env import host, username, password
 
 def get_db_url(db_name, username=username, hostname=host, password=password):
+    """ Builds URL for SQL query """
     return f'mysql+pymysql://{username}:{password}@{hostname}/{db_name}'
 
 def zillow_query():
+    """ Builds URL and query for zillow SQL query """
     url = get_db_url(db_name='zillow')
     query = """
             SELECT parcelid as ID,
                     transactiondate as DateSold,
                     taxvaluedollarcnt as Worth,
+                    taxamount as Taxes,
                     roomcnt as Rooms,
                     bathroomcnt as Baths,
                     bedroomcnt as Beds,
@@ -33,6 +36,8 @@ def zillow_query():
     return query, url
 
 def acquire_zillow():
+    """ Returns zillow data, 
+            queries database and stores data if none stored locally """
     if not os.path.isfile('zillow.csv'):
         query, url = zillow_query()
         df = pd.read_sql(query, url)
