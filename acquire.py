@@ -4,14 +4,16 @@ import os
 from env import host, username, password
 
 def get_db_url(db_name, username=username, hostname=host, password=password):
-    """ Builds URL for SQL query """
+    """ Builds URL for SQL query, returns: url """
     return f'mysql+pymysql://{username}:{password}@{hostname}/{db_name}'
 
 def zillow_query():
-    """ Builds URL and query for zillow SQL query """
+    """ Builds URL and query for zillow SQL query, returns:
+    query, url """
     url = get_db_url(db_name='zillow')
     query = """
             SELECT parcelid as ID,
+                    fips as LocalityCode,
                     transactiondate as DateSold,
                     taxvaluedollarcnt as Worth,
                     taxamount as Taxes,
@@ -24,7 +26,6 @@ def zillow_query():
                     garagetotalsqft as GarageSize,
                     calculatedfinishedsquarefeet as FinishedSize,
                     yearbuilt as YearBuilt,
-                    fips as LocalityCode,
                     regionidcounty as County,
                     regionidzip as Zipcode,
                     propertycountylandusecode as UseCode
