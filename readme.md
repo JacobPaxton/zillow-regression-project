@@ -11,10 +11,15 @@ Analyze Zillow data from May to August 2017 using 'Single Family Residential' ob
 7. Deliver my work in the form of a clean Jupyter Notebook
 
 # Hypotheses
-- There is a linear relationship between a home's value and the number of bedrooms it has.
-    * We accept this hypothesis with 95% confidence.
-- The value of a home with two bedrooms is not statistically different from a home with two bathrooms.
-    * We reject this hypothesis with 95% confidence.
+1. There is a linear relationship between a home's value and the number of bedrooms it has.
+    * Hypothesis is true with 95% confidence.
+2. The value of a home with two bedrooms is not statistically different from a home with two bathrooms.
+    * Hypothesis did not pass the 95% confidence threshold.
+3. The value of homes in Orange County is higher than the value of homes in all three counties combined
+    * Before removing outliers, this hypothesis is true with 95% confidence.
+    * After removing outliers, this hypothesis did not pass the 95% confidence threshold.
+4. The values of Age before the interquartile rule is applied is statistically significantly different from the values of Age after the interquartile rule.
+    * Hypothesis did not pass the 95% confidence threshold.
 
 # Plan 
 1. Acquire the correct data subset from the 'zillow' dataset
@@ -127,9 +132,27 @@ Analyze Zillow data from May to August 2017 using 'Single Family Residential' ob
 9. Present!
 
 # Data Dictionary
+| Feature           | Datatype                | Definition   |
+|:------------------|:------------------------|:-------------|
+| ID                | 19631 non-null: object  | Unique identifier for the property            |
+| LocalityCode      | 19631 non-null: object  | The three counties the dataset's coverage     |
+| DateSold          | 19631 non-null: object  | Date the property was sold                    |
+| Worth             | 19631 non-null: float64 | Tax-assessed value of the property, dollars   |
+| TaxRate           | 19631 non-null: float64 | Tax rate for the property, percentage         |
+| Baths             | 19631 non-null: float64 | Number of bathrooms on the property           |
+| Beds              | 19631 non-null: float64 | Number of bedrooms on the property            |
+| LotSize           | 19631 non-null: float64 | Size of the lot, sqft                         |
+| FinishedSize      | 19631 non-null: float64 | Size of the property's finished area, sqft    |
+| Age               | 19631 non-null: float64 | Age of the home, years                        |
 
-# Notes to self
-- "You will want to make sure you are using the best fields to represent square feet of home, number of bedrooms, and number of bathrooms. "Best" meaning the most accurate and available information. Here you will need to do some data investigation in the database and use your domain expertise to make some judgement calls."
-- "Brainstorming ideas and form hypotheses related to how variables might impact or relate to each other, both within independent variables and between the independent variables and dependent variable."
-- "Document any ideas for new features you may have while first looking at the existing variables and the project goals ahead of you."
-- "Add a data dictionary in your notebook at this point that defines all the fields used in your model and your analysis and answers the question, "Why did you use the fields you used?". e.g. "Why did you use bedroom_field1 over bedroom_field2?", not, "Why did you use number of bedrooms?""
+# Feature Selection notes
+1. Worth: Chose taxvaluedollarcnt instead of landtaxvaluedollarcnt because the value of the property is what we're looking at
+2. Baths: Chose bathroomcnt because it had more values available than the other bathroom columns
+2. Beds: Chose bedroomcnt because it had more values available than the other bedroom columns
+3. FinishedSize: Chose calculatedfinishedsquarefeet because it had more values available than the other finishedsquarefeet columns
+4. Age: Calculated age from yearbuilt column to have a feature with values starting from zero
+
+# Instructions to Replicate My Work
+1. Clone this repository
+2. Add your own env.py file for server credentials
+3. Execute the cells in final_notebook.ipynb
