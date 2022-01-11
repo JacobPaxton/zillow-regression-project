@@ -1,6 +1,13 @@
 # Project Overview
 Analyze Zillow data from May to August 2017 using 'Single Family Residential' observations from the 'zillow' dataset from the Codeup database. Build a regression model to predict home values. Present a slide deck containing work and findings.
 
+# Tableau Visualizations
+- Stakeholder question: Tax rates by county - https://public.tableau.com/app/profile/jacob.paxton/viz/IQRRuleandPropertyTaxRates/TaxRateHistogram
+- Bedroom count correlates with home value: https://public.tableau.com/app/profile/jacob.paxton/viz/IQRRuleBedCountCorrelatesWithHomeValue/BedsandWorth
+- Finished area size correlates with home value: https://public.tableau.com/app/profile/jacob.paxton/viz/IQRRuleFinishedAreaSizeCorrelatesWithHomeValue/FinishedSizeandWorth
+- Age of home correlates with home value: https://public.tableau.com/app/profile/jacob.paxton/viz/IQRRuleAgeofHomeCorrelatesWithHomeValue/AgeOfHomeandWorth
+- Bedroom count correlates with bathroom count: https://public.tableau.com/app/profile/jacob.paxton/viz/IQRRuleBedCountCorrelatesWithBathCount/BedsandBaths
+
 # Goals
 1. Deliver residence locality information
 2. Deliver distribution chart for tax rates by locality
